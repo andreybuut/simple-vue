@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+  <body>
+    <div id="app"></div>
+  </body>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block ui_logic %}
+  <script>
+    require('f/home/index');
+  </script>
+{% endblock ui_logic %}
