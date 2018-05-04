@@ -6,6 +6,9 @@ django
 # ORM Caching layer for Django Models
 django-cacheops
 
+# Django webpack loader
+django-webpack-loader
+
 # Control CORS headers from within the app
 django-cors-headers
 

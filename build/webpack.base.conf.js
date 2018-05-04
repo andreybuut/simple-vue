@@ -1,8 +1,10 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
+const webpack = require('webpack')
 const config = require('../webpack_config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const BundleTracker = require('webpack-bundle-tracker')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -31,6 +33,9 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  plugins: [
+    new BundleTracker({filename: './webpack-stats.json'}),
+  ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -42,14 +47,14 @@ module.exports = {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -72,7 +77,8 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]'),
+          include: [resolve('node_modules/material-design-icons-iconfont/dist/fonts')]
         }
       }
     ]

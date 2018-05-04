@@ -7,3 +7,4 @@ from .installed_apps import *
 # from .middleware import *
 from .static import *
 from .templates import *
+from .webpack import *

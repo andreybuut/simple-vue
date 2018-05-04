@@ -1,16 +1,16 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Example111</title>
+  </head>
+
   <body>
     <div id="app"></div>
+    {% render_bundle 'manifest' %}
+    {% render_bundle 'vendor' %}
+    {% render_bundle 'app' %}
   </body>
-{% endblock content %}
-
-{% block footer %}
-{% endblock footer %}
-
-{% block ui_logic %}
-  <script>
-    require('f/home/index');
-  </script>
-{% endblock ui_logic %}
+</html>

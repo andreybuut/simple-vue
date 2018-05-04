@@ -22,6 +22,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'rest_auth.registration',
+    'webpack_loader',
 )
 
 LOCAL_APPS = (

@@ -13,6 +13,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, ".ui"),
+    os.path.join(BASE_DIR, "dist/static"),
 )
 print(STATICFILES_DIRS, '@@@@@@@@@@@@@')
